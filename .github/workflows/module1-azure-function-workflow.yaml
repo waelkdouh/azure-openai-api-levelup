@@ -38,6 +38,7 @@ jobs:
       with:
         azcliversion: latest
         inlineScript: |
+          echo "$(az functionapp list --resource-group ${{ env.AZURE_RESOURCE_GROUP }} --query "[].name" -o tsv)"
           echo "appName=$(az functionapp list --resource-group ${{ env.AZURE_RESOURCE_GROUP }} --query "[].name" -o tsv)" >> $GITHUB_OUTPUT
         
     - name: Setup DotNet ${{ env.DOTNET_VERSION }} Environment
