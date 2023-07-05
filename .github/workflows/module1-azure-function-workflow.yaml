@@ -20,7 +20,7 @@ permissions:
 
 jobs:
   build-and-deploy:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
     - name: 'Checkout GitHub Action'
       uses: actions/checkout@main
@@ -59,8 +59,7 @@ jobs:
       id: fa
       with:
       # set app_name equal to output from "retrieve the Function App name" step
-        #app-name: ${{ steps.get_functionapp_name.outputs.appname }}
-        app-name: 'xact-classifier-openai-mvwqkf3sddcpk'
+        app-name: ${{ steps.get_functionapp_name.outputs.appname }}
         package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
         publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
 
